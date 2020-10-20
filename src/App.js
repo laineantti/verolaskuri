@@ -1,7 +1,5 @@
-import React from 'react';
+import React from 'react'
 import { useState } from 'react'
-//import './App.css';
-// lukumäärä???
 
 
 function App() {
@@ -10,30 +8,29 @@ function App() {
   const [veroprosentti, setVeroprosentti] = useState(0)
   const [veronmäärä, setVeronmäärä] = useState(0)
 
-  const nappiaPainettu = () => {
-
+  const laskeVeronmaara = (event) => {
     let vero = bruttopalkka * veroprosentti / 100
-    setVeronmäärä(vero);
+    setVeronmäärä(vero)
   }
+
   const palkkaMuuttunut = (event) => {
     setBruttopalkka(event.target.value)
-    //   console.log("Teksti on muuttunut")
+    laskeVeronmaara()
   }
+
   const veroprosMuuttunut = (event) => {
     setVeroprosentti(event.target.value)
-    // setTeksti(event.target.value)
-    //     console.log("Teksti on muuttunut")
+    laskeVeronmaara()
   }
 
   //JSX  //angular
   return (
     <div>
-      <button onClick={nappiaPainettu}>Laske veron määrä</button>
       <input onChange={(event) => palkkaMuuttunut(event)} value={bruttopalkka}></input>
       <input onChange={(event) => veroprosMuuttunut(event)} value={veroprosentti}></input>
       <p>{veronmäärä}</p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
